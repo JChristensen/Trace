@@ -18,4 +18,7 @@ One command line argument is needed, the IP address to trace.
 
 The script can be scheduled with cron to run as often as needed.
 
+To have the Linux logrotate facility manage the log files, change the first line in the trace-rotate file to point to your log file (and change any other parameters as desired), then copy it to the /etc/logrotate.d/ directory.
+
 The traceroute command may not be installed by default on some Linux distributions. If not present, install it with (e.g. for Debian and derivatives): sudo apt install traceroute
+
