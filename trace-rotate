@@ -1,4 +1,11 @@
+# copy this file into the /etc/logrotate.d directory,
+# its owner and group should both be root and permissions should be 644.
+# first change the path to the log file below as needed,
+# and change the "su" line to match the owner and group of the log file.
+# adjust the number of logs, frequency, etc. if desired.
+
 /home/jack/trace.log {
+    su jack jack
     rotate 7
     daily
     missingok
