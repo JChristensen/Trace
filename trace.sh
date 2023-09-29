@@ -36,7 +36,7 @@ echo "$t"
 
 # check to see if the target ip is in the traceroute results
 newline=$'\n'
-pattern="$newline[[:space:]]*[[:digit:]]+[[:space:]]+$ip[[:space:]]+"
+pattern="$newline[[:space:]]*[[:digit:]]+[[:space:]]+(\*[[:space:]]+){0,2}$ip[[:space:]]+"
 if [[ "$t" =~ $pattern ]]; then
     echo "$(date +"End: %F %T") OK, found $ip"
 else
