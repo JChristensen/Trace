@@ -29,15 +29,17 @@ exec &>>$logfile
 date +"Start: %F %T"
 
 # do the traceroute, capture the results in a variable
-t=$(traceroute -n $ip)
+tr1=$(traceroute -n $ip)
+
+# remove the first line which will always contain the target ip
+tr2=$(echo "$tr1" | tail -n +2)
 
 # output the traceroute results
-echo "$t"
+echo "$tr1"
 
-# check to see if the target ip is in the traceroute results
-newline=$'\n'
-pattern="$newline[[:space:]]*[[:digit:]]+[[:space:]]+(\*[[:space:]]+){0,2}$ip[[:space:]]+"
-if [[ "$t" =~ $pattern ]]; then
+# check to see if the target ip is in the traceroute results,
+# not including the first line
+if [[ "$tr2" =~ "$ip" ]]; then
     echo "$(date +"End: %F %T") OK, found $ip"
 else
     echo "$(date +"End: %F %T") error, did not find $ip"

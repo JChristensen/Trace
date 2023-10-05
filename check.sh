@@ -8,18 +8,7 @@ nrun=$(egrep -i "start:" trace.log.1 | wc -l)
 echo "$nrun"
 
 echo -e "\nChecking for errors..."
-egrep -i "error" trace*
-status=$?
-if (( $status )); then
-    if (( $status == 1 )); then
-        echo "...none found."
-    else
-        echo "...grep error, status $status."
-    fi
-fi
-
-echo -e "\nChecking for missed responses from target server..."
-egrep -i "\*\ +8\." trace*
+egrep -i "error" trace.log*
 status=$?
 if (( $status )); then
     if (( $status == 1 )); then
